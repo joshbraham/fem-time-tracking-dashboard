@@ -1,0 +1,186 @@
+@import url(https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500&display=swap);
+
+:root {
+	--clr-primary: hsl(246, 80%, 60%);
+
+	--clr-accent-work: hsl(15, 100%, 70%);
+	--clr-accent-play: hsl(195, 74%, 62%);
+	--clr-accent-study: hsl(348, 100%, 68%);
+	--clr-accent-exercise: hsl(145, 58%, 55%);
+	--clr-accent-social: hsl(264, 64%, 52%);
+	--clr-accent-selfcare: hsl(43, 84%, 65%);
+
+	--clr-neutral-900: hsl(226, 43%, 10%);
+	--clr-neutral-700: hsl(235, 46%, 20%);
+	--clr-neutral-400: hsl(235, 45%, 61%);
+	--clr-neutral-200: hsl(236, 100%, 87%);
+	--clr-neutral-100: white;
+
+	--border-radius: 1rem;
+	--content-padding: 1.5rem;
+	--content-spacing: 1.5rem;
+	--min-card-width: 15rem;
+}
+
+body {
+	background-color: var(--clr-neutral-900);
+	color: var(--clr-neutral-100);
+	font-size: 18px;
+	font-family: "Rubik", sans-serif;
+	/* Weights: 300, 400 (Regular), 500 */
+}
+
+.wrapper {
+	max-width: 64.5rem;
+	/* max-height: 31.5rem; */
+	margin: 0 auto;
+	padding: var(--content-padding);
+}
+
+.wrapper > :first-child {
+	margin-bottom: var(--content-spacing);
+}
+
+.sidebar {
+	max-width: var(--min-card-width);
+	background-color: var(--clr-neutral-700);
+	border-radius: var(--border-radius);
+}
+
+.user-info {
+	padding: var(--content-padding);
+	background-color: var(--clr-primary);
+	border-radius: inherit;
+}
+
+.user-pfp {
+	width: 90px;
+	aspect-ratio: 1;
+	border: 3px solid white;
+	border-radius: 50%;
+}
+
+.user-name {
+	line-height: 1.2;
+	font-weight: 300;
+}
+
+.user-name .before {
+	color: var(--clr-neutral-200);
+	font-size: 18px;
+	font-weight: 400;
+}
+
+.time-horizon {
+	padding: var(--content-padding);
+	display: flex;
+	flex-direction: column;
+	gap: 1rem;
+}
+
+.btn-period {
+	width: fit-content;
+	background-color: transparent;
+	border: 0;
+	color: inherit;
+	text-align: left;
+	cursor: pointer;
+}
+
+.btn-period:hover {
+	color: var(--clr-neutral-400);
+}
+
+.grid-container {
+	max-width: 48rem;
+	display: grid;
+	grid-template-columns: repeat(
+		auto-fit,
+		minmax(min(var(--min-card-width), 100%), 1fr)
+	);
+	gap: var(--content-spacing);
+}
+
+.card {
+	--backdrop-offset: 30px;
+	position: relative;
+	background-color: var(--clr-neutral-700);
+	border-radius: var(--border-radius);
+	padding: var(--content-padding);
+	margin-top: var(--backdrop-offset);
+}
+
+.card::before {
+	content: "";
+	border-radius: inherit;
+	position: absolute;
+	inset: calc(-1 * var(--backdrop-offset)) 0 5px;
+	z-index: -1;
+	/* These properties are set in JS (fetched by CSS from inline styles */
+	background: no-repeat var(--icon), var(--backdrop-color);
+	background-position: top -0.5rem right 1rem;
+}
+
+.card__header {
+	height: 2em;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.card__time {
+	display: flex;
+	flex-direction: column;
+}
+
+.card-title {
+	font-size: 18px;
+	font-weight: 400;
+	text-transform: capitalize;
+}
+
+.btn-ellipsis {
+	border: none;
+	background: no-repeat url(../images/icon-ellipsis.svg);
+	background-position: top 50% left 0;
+	width: 25px;
+	height: 100%;
+	cursor: pointer;
+	position: relative;
+	z-index: 1;
+}
+
+.current.time {
+	font-weight: 300;
+	font-size: 3em;
+}
+
+.previous {
+	color: var(--clr-neutral-200);
+}
+
+.previous.daily::before {
+	content: "Yesterday - ";
+}
+
+.previous.weekly::before {
+	content: "Last week - ";
+}
+
+.previous.monthly::before {
+	content: "Last month - ";
+}
+
+.time::after {
+	content: "hrs";
+}
+
+/* Footer styles */
+
+.attribution {
+	font-size: 11px;
+	text-align: center;
+}
+.attribution a {
+	color: hsl(228, 45%, 44%);
+}
