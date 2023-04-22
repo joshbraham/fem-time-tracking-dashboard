@@ -20,19 +20,28 @@ function setPeriodicData(card, data, period = "weekly") {
 	}).timeframes[period];
 
 	const currentSpan = card.querySelector(".current");
-	currentSpan.textContent = current;
+	currentSpan.textContent = String(current) + (current === 1 ? "hr" : "hrs");
 
 	const previousSpan = card.querySelector(".previous");
-	previousSpan.textContent = previous;
+	previousSpan.textContent = String(previous) + (previous === 1 ? "hr" : "hrs");
 
 	previousSpan.classList.remove("daily", "weekly", "monthly");
 	previousSpan.classList.add(period);
 }
 
-// Change all card data
-function setPeriodicDataAll(cards, data, period = "weekly") {
+// Change all card data & give relevant button an active class
+function setPeriodicDataAll(cards, data, period = "weekly", buttons = null) {
 	cards.forEach((card) => {
 		setPeriodicData(card, data, period);
+	});
+
+	setActive(period, buttons);
+}
+
+function setActive(period, elements) {
+	elements.forEach((element) => {
+		element.classList.remove("active");
+		if (element.id === period) element.classList.add("active");
 	});
 }
 
@@ -48,14 +57,14 @@ async function main() {
 	// Style cards, set initial data
 	cards.forEach((card) => {
 		styleCard(card);
-		setPeriodicData(card, data);
 	});
+	setPeriodicDataAll(cards, data, "weekly", periodBtns);
 
 	// Add button functionality
 	periodBtns.forEach((button) => {
-		const period = button.textContent.toLowerCase();
+		const period = button.id;
 		button.addEventListener("click", () => {
-			setPeriodicDataAll(cards, data, period);
+			setPeriodicDataAll(cards, data, period, periodBtns);
 		});
 	});
 }

@@ -12,6 +12,7 @@
 
 	--clr-neutral-900: hsl(226, 43%, 10%);
 	--clr-neutral-700: hsl(235, 46%, 20%);
+	--clr-neutral-500: hsl(235, 45%, 31%);
 	--clr-neutral-400: hsl(235, 45%, 61%);
 	--clr-neutral-200: hsl(236, 100%, 87%);
 	--clr-neutral-100: white;
@@ -23,6 +24,7 @@
 }
 
 body {
+	padding-top: 3rem;
 	background-color: var(--clr-neutral-900);
 	color: var(--clr-neutral-100);
 	font-size: 18px;
@@ -31,23 +33,25 @@ body {
 }
 
 .wrapper {
-	max-width: 64.5rem;
-	/* max-height: 31.5rem; */
+	max-width: 67.5rem;
 	margin: 0 auto;
-	padding: var(--content-padding);
+	padding-inline: var(--content-padding);
 }
 
-.wrapper > :first-child {
-	margin-bottom: var(--content-spacing);
+.sidebar-wrapper {
+	grid-row: 1 / 7;
 }
 
 .sidebar {
-	max-width: var(--min-card-width);
+	height: 30.5625rem;
 	background-color: var(--clr-neutral-700);
 	border-radius: var(--border-radius);
+	display: flex;
+	flex-direction: column;
 }
 
 .user-info {
+	height: 100%;
 	padding: var(--content-padding);
 	background-color: var(--clr-primary);
 	border-radius: inherit;
@@ -55,9 +59,9 @@ body {
 
 .user-pfp {
 	width: 90px;
-	aspect-ratio: 1;
 	border: 3px solid white;
 	border-radius: 50%;
+	margin-bottom: var(--content-spacing);
 }
 
 .user-name {
@@ -67,7 +71,7 @@ body {
 
 .user-name .before {
 	color: var(--clr-neutral-200);
-	font-size: 18px;
+	font-size: 14px;
 	font-weight: 400;
 }
 
@@ -85,29 +89,45 @@ body {
 	color: inherit;
 	text-align: left;
 	cursor: pointer;
+	color: var(--clr-neutral-400);
+	transition: 100ms;
 }
 
-.btn-period:hover {
-	color: var(--clr-neutral-400);
+.btn-period:hover,
+.btn-period.active {
+	color: var(--clr-neutral-100);
 }
 
 .grid-container {
-	max-width: 48rem;
 	display: grid;
 	grid-template-columns: repeat(
 		auto-fit,
 		minmax(min(var(--min-card-width), 100%), 1fr)
 	);
-	gap: var(--content-spacing);
+	column-gap: var(--content-spacing);
+}
+
+.grid-container > * {
+	margin-bottom: var(--content-spacing);
 }
 
 .card {
-	--backdrop-offset: 30px;
+	--backdrop-offset: 45px;
 	position: relative;
 	background-color: var(--clr-neutral-700);
 	border-radius: var(--border-radius);
 	padding: var(--content-padding);
 	margin-top: var(--backdrop-offset);
+	transition: 100ms;
+	cursor: pointer;
+}
+
+.card__header {
+	margin-bottom: 1rem;
+}
+
+.card:hover {
+	background-color: var(--clr-neutral-500);
 }
 
 .card::before {
@@ -118,7 +138,11 @@ body {
 	z-index: -1;
 	/* These properties are set in JS (fetched by CSS from inline styles */
 	background: no-repeat var(--icon), var(--backdrop-color);
-	background-position: top -0.5rem right 1rem;
+	background-position: top -10px right 1rem;
+}
+
+.card[data-category="exercise"]::before {
+	background-position: top 0 right 1rem;
 }
 
 .card__header {
@@ -140,22 +164,22 @@ body {
 }
 
 .btn-ellipsis {
+	width: 25px;
+	height: 100%;
 	border: none;
 	background: no-repeat url(../images/icon-ellipsis.svg);
 	background-position: top 50% left 0;
-	width: 25px;
-	height: 100%;
 	cursor: pointer;
-	position: relative;
-	z-index: 1;
 }
 
-.current.time {
+.current {
 	font-weight: 300;
 	font-size: 3em;
+	line-height: 1.2;
 }
 
 .previous {
+	font-size: 15px;
 	color: var(--clr-neutral-200);
 }
 
@@ -171,10 +195,6 @@ body {
 	content: "Last month - ";
 }
 
-.time::after {
-	content: "hrs";
-}
-
 /* Footer styles */
 
 .attribution {
@@ -183,4 +203,51 @@ body {
 }
 .attribution a {
 	color: hsl(228, 45%, 44%);
+}
+
+.attribution a:hover {
+	color: var(--clr-primary);
+}
+
+@media (max-width: 551px) {
+	.sidebar-wrapper {
+		grid-row: auto;
+	}
+
+	.sidebar {
+		height: auto;
+	}
+
+	.user-info {
+		display: flex;
+		align-items: center;
+		gap: 1rem;
+	}
+
+	.user-pfp {
+		margin-bottom: 0;
+	}
+
+	.user-name {
+		font-size: 24px;
+	}
+
+	.time-horizon {
+		flex-direction: row;
+		justify-content: space-evenly;
+	}
+
+	.card__header {
+		margin-bottom: 0;
+	}
+
+	.card__time {
+		flex-direction: row;
+		align-items: center;
+		justify-content: space-between;
+	}
+
+	.current {
+		font-size: 2em;
+	}
 }

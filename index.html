@@ -18,26 +18,27 @@
 	</head>
 	<body>
 		<main role="main" class="wrapper">
-			<div class="sidebar">
-				<div class="user-info">
-					<img
-						class="user-pfp"
-						src="images/image-jeremy.png"
-						alt="User profile picture."
-					/>
-					<h1 class="user-name">
-						<span class="before">Report for</span><br />Jeremy Robson
-					</h1>
-				</div>
-
-				<div class="time-horizon">
-					<button class="btn-period">Daily</button>
-					<button class="btn-period">Weekly</button>
-					<button class="btn-period">Monthly</button>
-				</div>
-			</div>
-
 			<div class="grid-container">
+				<!-- Sidebar -->
+				<div class="sidebar-wrapper">
+					<div class="sidebar">
+						<div class="user-info">
+							<img
+								class="user-pfp"
+								src="images/image-jeremy.png"
+								alt="User profile picture."
+							/>
+							<h1 class="user-name">
+								<span class="before">Report for</span><br />Jeremy Robson
+							</h1>
+						</div>
+						<div class="time-horizon">
+							<button id="daily" class="btn-period">Daily</button>
+							<button id="weekly" class="btn-period">Weekly</button>
+							<button id="monthly" class="btn-period">Monthly</button>
+						</div>
+					</div>
+				</div>
 				<!-- Time card: WORK -->
 				<div class="card" data-category="work">
 					<div class="card__header">
@@ -45,8 +46,8 @@
 						<button class="btn-ellipsis"></button>
 					</div>
 					<div class="card__time">
-						<span class="time current"></span>
-						<span class="time previous"></span>
+						<span class="current"></span>
+						<span class="previous"></span>
 					</div>
 				</div>
 				<!-- Time card: PLAY -->
@@ -56,8 +57,8 @@
 						<button class="btn-ellipsis"></button>
 					</div>
 					<div class="card__time">
-						<span class="time current"></span>
-						<span class="time previous"></span>
+						<span class="current"></span>
+						<span class="previous"></span>
 					</div>
 				</div>
 				<!-- Time card: STUDY -->
@@ -67,8 +68,8 @@
 						<button class="btn-ellipsis"></button>
 					</div>
 					<div class="card__time">
-						<span class="time current"></span>
-						<span class="time previous"></span>
+						<span class="current"></span>
+						<span class="previous"></span>
 					</div>
 				</div>
 				<!-- Time card: EXERCISE -->
@@ -78,8 +79,8 @@
 						<button class="btn-ellipsis"></button>
 					</div>
 					<div class="card__time">
-						<span class="time current"></span>
-						<span class="time previous"></span>
+						<span class="current"></span>
+						<span class="previous"></span>
 					</div>
 				</div>
 				<!-- Time card: SOCIAL -->
@@ -89,8 +90,8 @@
 						<button class="btn-ellipsis"></button>
 					</div>
 					<div class="card__time">
-						<span class="time current"></span>
-						<span class="time previous"></span>
+						<span class="current"></span>
+						<span class="previous"></span>
 					</div>
 				</div>
 				<!-- Time card: SELF CARE -->
@@ -100,8 +101,8 @@
 						<button class="btn-ellipsis"></button>
 					</div>
 					<div class="card__time">
-						<span class="time current"></span>
-						<span class="time previous"></span>
+						<span class="current"></span>
+						<span class="previous"></span>
 					</div>
 				</div>
 			</div>
@@ -110,9 +111,14 @@
 		<footer role="contentinfo">
 			<p class="attribution">
 				Challenge by
-				<a href="https://www.frontendmentor.io?ref=challenge" target="_blank"
+				<a
+					href="https://www.frontendmentor.io/challenges/time-tracking-dashboard-UIQ7167Jw/hub"
+					target="_blank"
 					>Frontend Mentor</a
-				>. Coded by <a href="#">Your Name Here</a>.
+				>. Coded by
+				<a href="https://www.frontendmentor.io/profile/joshbraham"
+					>@joshbraham</a
+				>.
 			</p>
 		</footer>
 	</body>
