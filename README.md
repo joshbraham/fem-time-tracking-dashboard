@@ -2,7 +2,7 @@
 
 This is a solution to the [Time tracking dashboard challenge on Frontend Mentor](https://www.frontendmentor.io/challenges/time-tracking-dashboard-UIQ7167Jw).
 
-### **[Live Site Link]()**
+### **[Live Site Link](https://jbhm-time-tracking-dashboard.netlify.app/)**
 
 ---
 
